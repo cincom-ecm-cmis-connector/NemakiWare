@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <import resource="classpath:propertyContext.xml" />
+    
+      <!-- Property Manager -->
+    <bean id="nemakiPropertyManager" class="jp.aegif.nemaki.util.NemakiPropertyManager">
+        <property name="nemakiProperties" ref="propertyConfigurer" />
+    </bean>
+    
+    
+    <bean id="authenticationService" class="jp.aegif.nemaki.cincom.service.cmis.impl.CEAuthenticationServiceImpl" scope="singleton">
+        <constructor-arg>
+            <ref bean="CincomManager"></ref>
+        </constructor-arg>
+         <property name="propertyManager">
+            <ref bean="nemakiPropertyManager" />
+        </property>
+    </bean>
+    
+    
+    <!-- Node Service Beans -->
+    <bean id="contentService" class="jp.aegif.nemaki.cincom.service.node.impl.CEContentServiceImpl" init-method="init" scope="singleton">
+        <property name="rootObjectId">
+            <value>${cmis.repository.main.root}</value>
+        </property>
+        <property name="propertyManager">
+            <ref bean="nemakiPropertyManager" />
+        </property>
+         <property name="cincomManager" ref="CincomManager" />
+    </bean> 
+    
+     <!-- Sever Connection -->
+    <bean id="CincomManager" class="jp.aegif.nemaki.cincom.shared.CincomManager">
+        <constructor-arg>
+              <ref bean="nemakiPropertyManager" />
+        </constructor-arg>
+    </bean>
+</beans>

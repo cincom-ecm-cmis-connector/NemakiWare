@@ -1,0 +1,19 @@
+- id: "cmis:read"
+  description: "READ"
+  asCmisBasic: "cmis:read" 
+  
+- id: "cmis:create"
+  description: "CREATE"
+  asCmisBasic: "cmis:write"
+
+- id: "cmis:write"
+  description: "WRITE"
+  asCmisBasic: "cmis:write"
+
+- id: "cmis:delete"
+  description: "DELETE"
+  asCmisBasic: "cmis:write"
+
+- id: "cmis:all"
+  description: "ADMINISTRATOR"
+  asCmisBasic: "cmis:all"

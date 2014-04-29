@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<!-- The French langpack -->
+
+<langpack>
+    <str id="user.inputpanel.appserver.title" txt="Configuration de Tomcat" />
+    <str id="user.inputpanel.repository.title" txt="Configuration du référentiel" />
+    
+    <str id="tomcat.port" txt="Tomcat port" />
+    <str id="tomcat.shutdown.port" txt="Tomcat port(arrêt)" />
+    <str id="tomcat.ajp.port" txt="Tomcat port(AJP)" />
+
+	<str id="cincom.server.url" txt="URL du serveur de CincomECM" />
+	<str id="cincom.principal.admin.id" txt="ID Administrateur" />
+	<str id="cincom.principal.admin.password" txt="Mot de passe Administrateur" />
+	<str id="cmis.repository.main.root" txt="UUID de la racine" />
+    <str id="cmis.repository.main" txt="ID du Référentiel de CMIS" />    
+</langpack>

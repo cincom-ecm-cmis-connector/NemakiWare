@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    
+     <!-- CMIS Service Beans -->
+    <bean id="authenticationService" class="jp.aegif.nemaki.cincom.service.cmis.impl.CEAuthenticationServiceImpl" scope="singleton">
+        <constructor-arg>
+            <ref bean="CincomManager"></ref>
+        </constructor-arg>
+        <property name="propertyManager">
+            <ref bean="nemakiPropertyManager" />
+        </property>
+    </bean>
+    
+
+    <!-- Node Service Beans -->
+    <bean id="ContentService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>jp.aegif.nemaki.service.node.ContentService
+                </value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="contentService" />
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>debugInterceptor</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="contentService" class="jp.aegif.nemaki.cincom.service.node.impl.CEContentServiceImpl" depends-on="CincomManager" init-method="init" scope="singleton">
+        <property name="cincomManager" ref="CincomManager" />
+        <property name="typeManager" ref="typeManager" />
+        <property name="rootObjectId">
+            <value>${cmis.repository.main.root}</value>
+        </property>
+        <property name="propertyManager">
+            <ref bean="nemakiPropertyManager" />
+        </property>
+    </bean> 
+
+    <bean id="PrincipalService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>jp.aegif.nemaki.service.node.PrincipalService
+                </value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="principalService" />
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>debugInterceptor</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="principalService" class="jp.aegif.nemaki.cincom.service.node.impl.CEPrincipalServiceImpl" depends-on="CincomManager" init-method="init" scope="singleton">
+       <property name="cincomManager">
+            <ref bean="CincomManager" />
+        </property>
+         <property name="propertyManager">
+            <ref bean="nemakiPropertyManager" />
+        </property>
+    </bean>
+
+    <bean id="TypeService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>jp.aegif.nemaki.service.node.TypeService
+                </value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="typeService" />
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>debugInterceptor</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="typeService" class="jp.aegif.nemaki.cincom.service.node.impl.TypeServiceImpl" scope="singleton">
+        <constructor-arg>
+            <ref bean="CincomManager"></ref>
+        </constructor-arg>
+         <constructor-arg>
+           <ref bean="nemakiPropertyManager" />
+        </constructor-arg>
+    </bean>
+
+    <!-- Sever Connection -->
+    <bean id="CincomManager" class="jp.aegif.nemaki.cincom.shared.CincomManager">
+        <constructor-arg>
+              <ref bean="nemakiPropertyManager" />
+        </constructor-arg>
+    </bean>
+   
+    
+    
+    <!-- Search Engine Beans -->
+    <bean id="queryProcessor" class="jp.aegif.nemaki.cincom.query.CincomQueryProcessor" scope="singleton">
+         <property name="cincomManager">
+            <ref bean="CincomManager"></ref>
+        </property>
+        <property name="contentService">
+            <ref bean="contentService"></ref>
+        </property>
+        <property name="permissionService">
+            <ref bean="PermissionService"></ref>
+        </property>
+        <property name="compileObjectService">
+            <ref bean="CompileObjectService"></ref>
+        </property>
+        <property name="exceptionService">
+            <ref bean="ExceptionService"></ref>
+        </property>
+    </bean>
+    
+</beans>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<installation version="1.0">
+  <!-- Application info -->
+  <info>
+    <appname>CincomECM CMIS connector</appname>
+    <appversion>2.1</appversion>
+    <url>http://ecm.cincom.com</url>
+  </info>
+
+  <!-- GUI settings -->
+  <guiprefs width="800" height="600" resizable="yes">
+    <modifier key="useButtonIcons" value="no"/>
+    <modifier key="useLabelIcons" value="no"/>
+    <modifier key="labelGap" value="2"/>
+    <modifier key="layoutAnchor" value="NORTHWEST"/>
+    <modifier key="useHeadingPanel" value="yes"/>
+    <modifier key="headingImageOnLeft" value="yes"/>
+    <modifier key="headingLineCount" value="1"/>
+    <modifier key="headingFontSize" value="1.5"/>
+    <modifier key="headingBackgroundColor" value="0x00ffffff"/>
+    <modifier key="headingPanelCounter" value="text"/>
+    <modifier key="headingPanelCounterPos" value="inHeading"/>
+  </guiprefs>
+
+  <!-- Available languages -->
+  <locale>
+    <langpack iso3="jpn" />
+    <langpack iso3="eng"/>
+    <langpack iso3="fra"/>
+  </locale>
+
+  <!-- Variables in this fhile-->
+  <variables>
+    <variable name="TOMCAT" value="apache-tomcat-7.0.41" />
+  </variables>
+
+  <!-- Resource import -->
+  <resources>
+    <res id="Installer.image" src="setup/installer/images/cincom-logo.png" />
+    <res id="LicencePanel.licence" src="legal/LICENSE.txt"/>
+    <res id="userInputSpec.xml" src="setup/installer/user-input-spec-cincom_modified.xml" parse="yes" type="xml" />
+
+    <res id="packsLang.xml_jpn" src="setup/installer/i18n-cincom/packsLang.xml_jpn"/>
+    <res id="packsLang.xml_fra" src="setup/installer/i18n-cincom/packsLang.xml_fra"/>
+
+    <res id="userInputLang.xml_jpn" src="setup/installer/i18n-cincom/userInputLang.xml_jpn"/>
+    <res id="userInputLang.xml_fra" src="setup/installer/i18n-cincom/userInputLang.xml_fra"/>
+  </resources>
+
+  <!-- Conditions -->
+  <conditions>
+    <condition type="packselection" id="condition.pack.application.server">
+      <packid>pack.application.server</packid>
+    </condition>
+    <condition type="packselection" id="condition.pack.nemakiware">
+      <packid>pack.nemakiware</packid>
+    </condition>
+  </conditions>
+
+  <!-- Panels in order -->
+  <panels>
+    <panel classname="HelloPanel" />
+    <panel classname="LicencePanel"/>
+    <panel classname="TargetPanel" />
+    <panel classname="TreePacksPanel"/>
+    <panel classname="SummaryPanel"/>
+    <panel classname="UserInputPanel" id="user.inputpanel.appserver" 
+      condition="condition.pack.application.server" />
+    <panel classname="UserInputPanel" id="user.inputpanel.repository" 
+      condition="condition.pack.nemakiware" />    
+    <panel classname="InstallPanel" />
+    <panel classname="FinishPanel" />
+  </panels>
+
+  <!-- Packs: Define installation files here-->
+  <packs>
+
+    <!-- Pack: Utilities -->
+    <pack id="pack.utility" name="Installation utility" required="yes" hidden="true">
+      <description></description>
+      
+       <!-- Import configuration scripts -->
+      <file src="setup/installer/install-util/target/install-util.jar" targetdir="$INSTALL_PATH/setup" />
+      <fileset dir="setup/installer/tomcat" targetdir="$INSTALL_PATH/setup/tomcat">
+        <exclude name="apache-tomcat-7.0.41.zip" />
+      </fileset>
+    </pack>
+
+    <!-- Pack: Application server -->
+    <pack id="pack.application.server" name="Tomcat" required="no"> 
+      <description></description>
+      
+      <!-- Expand Tomcat -->
+      <file src="setup/installer/tomcat/${TOMCAT}.zip" targetdir="$INSTALL_PATH" unpack="true" />
+      
+      <!-- Create log folder-->
+      <file src="setup/installer/tomcat/logs/catalina.out" targetdir="$INSTALL_PATH/${TOMCAT}/logs" />
+      
+      <!-- Configure tomcat -->
+      <executable targetfile="$INSTALL_PATH/setup/install-util.jar" stage="postinstall" type="jar" keep="true">
+        <args>
+          <arg value="config-tomcat" />
+          <arg value="$INSTALL_PATH/${TOMCAT}" />
+          <arg value="${tomcat.port}" />
+          <arg value="${tomcat.shutdown.port}" />
+          <arg value="${tomcat.ajp.port}" />
+        </args>
+      </executable>
+    </pack>
+
+    <!-- Pack: NemakiWare -->
+    <pack id="pack.nemakiware" name="CincomECM CMIS connector" required="no">
+      <description></description>
+      
+      <!-- Deploy WAR file -->
+      <file src="nemakiware/target/cmis-connector.war" targetdir="$INSTALL_PATH/${TOMCAT}/webapps" />
+      
+      <!-- Create general custom setting file -->
+      <singlefile src="setup/installer/tomcat/app-server-general-cincom.properties" target="$INSTALL_PATH/${TOMCAT}/shared/classes/app-server-general.properties" />
+      <parsable targetfile="$INSTALL_PATH/${TOMCAT}/shared/classes/app-server-general.properties"/>
+    </pack>
+
+    <!-- Pack: Delete tmp files -->
+    <pack id="pack.delete.tmp" name="Delete tmp files" required="yes" hidden="true">
+      <description></description>
+      <executable targetfile="$INSTALL_PATH/setup/install-util.jar" stage="postinstall" type="jar" keep="true">
+        <args>
+          <arg value="delete-tmp-files" />
+          <arg value="$INSTALL_PATH/setup/tomcat" />
+        </args>
+      </executable>
+      <executable targetfile="$INSTALL_PATH/setup/install-util.jar" stage="postinstall" type="jar" keep="false">
+        <args>
+          <arg value="delete-tmp-files" />
+          <arg value="$INSTALL_PATH/setup/nemakishare" />
+        </args>
+      </executable>
+    </pack>
+  </packs>
+</installation>

@@ -1,0 +1,46 @@
+<!-- NOTE:Place holders are replaced with values in source code property file -->
+<!-- NOTE:Labels are defined in i18n folder, except that english is defined here -->
+
+<userInput>
+	<!-- App server configuration -->
+	<panel id="user.inputpanel.appserver">
+		<field type="title" id="user.inputpanel.appserver.title" txt="Tomcat configuration" />
+		<field type="text" variable="tomcat.port">
+			<spec id="tomcat.port" size="6" set="8180" txt="Tomcat port" />
+			<validator class="com.izforge.izpack.util.IsPortValidator" txt="Invalid server port!" />
+		</field>
+		<field type="text" variable="tomcat.shutdown.port">
+			<spec id="tomcat.shutdown.port" size="6" set="9005" txt="Tomcat port(shutdown)"/>
+			<validator class="com.izforge.izpack.util.IsPortValidator" txt="Invalid server shutdown port!" />
+		</field>
+		<field type="text" variable="tomcat.ajp.port">
+			<spec id="tomcat.ajp.port" size="6" set="9009" txt="Tomcat port(AJP)"/>
+			<validator class="com.izforge.izpack.util.IsPortValidator" txt="Invalid AJP port!" />
+		</field>
+	</panel>
+
+	<!-- Repository configuration -->
+	<panel id="user.inputpanel.repository">
+		<field type="title" id="user.inputpanel.repository.title" txt="Repository configuration " />
+		<field type="text" id="cincom.server.url" variable="cincom.server.url">
+			<spec id="cincom.server.url" size="30" set="${cincom.server.url}" txt="CincomECM server URL" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" txt="Empty value!" />
+		</field>
+		<field type="text" id="cincom.principal.admin.id" variable="cincom.principal.admin.id">
+			<spec id="cincom.principal.admin.id" size="20" set="${cincom.principal.admin.id}" txt="CincomECM Admin ID" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" txt="Empty value!" />
+		</field>
+		<field type="text" id="cincom.principal.admin.password" variable="cincom.principal.admin.password">
+			<spec id="cincom.principal.admin.password" size="20" set="${cincom.principal.admin.password}" txt="CincomECM Admin Password" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" txt="Empty value!" />
+		</field>
+		<field type="text" id="cmis.repository.main.root" variable="cmis.repository.main.root">
+			<spec id="cmis.repository.main.root" size="30" set="${cmis.repository.main.root}" txt="Root folder UUID" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" txt="Empty value!" />
+		</field>
+		<field type="text" id="cmis.repository.main" variable="cmis.repository.main">
+			<spec id="cmis.repository.main" size="20" set="${cmis.repository.main}" txt="Repository ID" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" txt="Empty value!" />
+		</field>
+	</panel>	
+</userInput>
