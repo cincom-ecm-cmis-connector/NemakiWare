@@ -20,8 +20,8 @@ import jp.aegif.nemaki.model.NemakiPropertyDefinition;
 import jp.aegif.nemaki.model.NemakiPropertyDefinitionCore;
 import jp.aegif.nemaki.model.NemakiPropertyDefinitionDetail;
 import jp.aegif.nemaki.model.NemakiTypeDefinition;
-import jp.aegif.nemaki.model.constant.NodeType;
-import jp.aegif.nemaki.model.constant.PropertyKey;
+import jp.aegif.nemaki.util.constant.NodeType;
+import jp.aegif.nemaki.util.constant.PropertyKey;
 import jp.aegif.nemaki.service.node.TypeService;
 import jp.aegif.nemaki.util.NemakiPropertyManager;
 

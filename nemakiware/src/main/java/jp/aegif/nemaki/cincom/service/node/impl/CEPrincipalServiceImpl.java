@@ -9,15 +9,13 @@ import jp.aegif.nemaki.cincom.model.constant.CincomPropertyKey;
 import jp.aegif.nemaki.cincom.shared.CincomManager;
 import jp.aegif.nemaki.model.Group;
 import jp.aegif.nemaki.model.User;
-import jp.aegif.nemaki.model.constant.NodeType;
-import jp.aegif.nemaki.model.constant.PropertyKey;
+import jp.aegif.nemaki.util.constant.NodeType;
 import jp.aegif.nemaki.service.node.PrincipalService;
 import jp.aegif.nemaki.util.NemakiPropertyManager;
 import jp.aegif.nemaki.util.PasswordHasher;
 
 import com.cincom.kmdata.client.api.user.AccessDeniedException_Exception;
 import com.cincom.kmdata.client.api.user.ItemNotFoundException_Exception;
-import com.cincom.kmdata.client.api.user.KeyValuePair;
 import com.cincom.kmdata.client.api.user.RepositoryException_Exception;
 import com.cincom.kmdata.client.api.user.UserWS;
 
