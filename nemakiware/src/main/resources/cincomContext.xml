@@ -94,7 +94,7 @@
     </bean>
 
     <!-- Sever Connection -->
-    <bean id="CincomManager" class="jp.aegif.nemaki.cincom.shared.CincomManager">
+    <bean id="CincomManager" class="jp.aegif.nemaki.cincom.util.CincomManager">
         <constructor-arg>
               <ref bean="nemakiPropertyManager" />
         </constructor-arg>
