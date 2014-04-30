@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import jp.aegif.nemaki.cincom.model.constant.CincomPropertyKey;
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
+import jp.aegif.nemaki.cincom.util.constant.CincomPropertyKey;
 import jp.aegif.nemaki.model.Group;
 import jp.aegif.nemaki.model.User;
 import jp.aegif.nemaki.util.constant.NodeType;

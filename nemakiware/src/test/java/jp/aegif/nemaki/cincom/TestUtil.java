@@ -8,7 +8,7 @@ import com.cincom.kmdata.client.api.folder.LockException_Exception;
 import com.cincom.kmdata.client.api.folder.RepositoryException_Exception;
 import com.cincom.kmdata.client.api.folder.WorkflowException_Exception;
 
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
 
 public class TestUtil {
 	public static com.cincom.kmdata.client.api.folder.Folder createFolder(CincomManager manager, String parentPath, String name, String propertyGroup) {

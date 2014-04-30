@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 
 import jp.aegif.nemaki.cincom.service.node.impl.CEContentServiceImpl;
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
 import jp.aegif.nemaki.model.AttachmentNode;
 import jp.aegif.nemaki.model.Document;
 

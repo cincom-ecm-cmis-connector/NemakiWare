@@ -1,4 +1,4 @@
-package jp.aegif.nemaki.cincom.model.constant;
+package jp.aegif.nemaki.cincom.util.constant;
 
 public interface CincomConst{
 	//For queryName, do no use "."

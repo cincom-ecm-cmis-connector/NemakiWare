@@ -20,8 +20,8 @@
  ******************************************************************************/
 package jp.aegif.nemaki.cincom.service.cmis.impl;
 
-import jp.aegif.nemaki.cincom.model.constant.CincomPropertyKey;
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
+import jp.aegif.nemaki.cincom.util.constant.CincomPropertyKey;
 import jp.aegif.nemaki.service.cmis.AuthenticationService;
 import jp.aegif.nemaki.util.NemakiPropertyManager;
 

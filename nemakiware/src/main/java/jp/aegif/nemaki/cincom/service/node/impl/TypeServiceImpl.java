@@ -12,9 +12,9 @@ import java.util.StringTokenizer;
 
 import jp.aegif.nemaki.cincom.model.CmisPropertyId;
 import jp.aegif.nemaki.cincom.model.CmisTypeId;
-import jp.aegif.nemaki.cincom.model.constant.CincomConst;
-import jp.aegif.nemaki.cincom.model.constant.CincomPropertyKey;
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
+import jp.aegif.nemaki.cincom.util.constant.CincomConst;
+import jp.aegif.nemaki.cincom.util.constant.CincomPropertyKey;
 import jp.aegif.nemaki.model.Choice;
 import jp.aegif.nemaki.model.NemakiPropertyDefinition;
 import jp.aegif.nemaki.model.NemakiPropertyDefinitionCore;

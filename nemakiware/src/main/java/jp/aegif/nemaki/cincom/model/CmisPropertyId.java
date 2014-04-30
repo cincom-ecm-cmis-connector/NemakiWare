@@ -3,7 +3,7 @@ package jp.aegif.nemaki.cincom.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.aegif.nemaki.cincom.model.constant.CincomConst;
+import jp.aegif.nemaki.cincom.util.constant.CincomConst;
 
 import org.apache.commons.lang.StringUtils;
 

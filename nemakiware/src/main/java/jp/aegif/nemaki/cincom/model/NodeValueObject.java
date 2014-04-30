@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import jp.aegif.nemaki.cincom.model.constant.CincomConst;
+import jp.aegif.nemaki.cincom.util.constant.CincomConst;
 import jp.aegif.nemaki.model.Property;
 
 import org.apache.commons.collections.CollectionUtils;

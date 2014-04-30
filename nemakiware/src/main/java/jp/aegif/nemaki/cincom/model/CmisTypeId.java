@@ -1,6 +1,6 @@
 package jp.aegif.nemaki.cincom.model;
 
-import jp.aegif.nemaki.cincom.model.constant.CincomConst;
+import jp.aegif.nemaki.cincom.util.constant.CincomConst;
 
 public class CmisTypeId {
 	private String prefix;

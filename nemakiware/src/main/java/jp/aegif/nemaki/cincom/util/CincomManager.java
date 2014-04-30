@@ -1,4 +1,4 @@
-package jp.aegif.nemaki.cincom.shared;
+package jp.aegif.nemaki.cincom.util;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
-import jp.aegif.nemaki.cincom.model.constant.CincomPropertyKey;
+import jp.aegif.nemaki.cincom.util.constant.CincomPropertyKey;
 import jp.aegif.nemaki.util.NemakiPropertyManager;
 
 import org.apache.chemistry.opencmis.commons.exceptions.CmisPermissionDeniedException;

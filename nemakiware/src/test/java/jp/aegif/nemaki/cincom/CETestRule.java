@@ -2,7 +2,7 @@ package jp.aegif.nemaki.cincom;
 
 import jp.aegif.nemaki.cincom.service.cmis.impl.CEAuthenticationServiceImpl;
 import jp.aegif.nemaki.cincom.service.node.impl.CEContentServiceImpl;
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

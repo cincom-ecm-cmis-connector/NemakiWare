@@ -32,7 +32,7 @@ import jp.aegif.nemaki.cincom.model.CmisTypeId;
 import jp.aegif.nemaki.cincom.model.Document;
 import jp.aegif.nemaki.cincom.model.NodeValueObject;
 import jp.aegif.nemaki.cincom.service.node.impl.CEContentServiceImpl;
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
 import jp.aegif.nemaki.model.Content;
 import jp.aegif.nemaki.model.Folder;
 import jp.aegif.nemaki.query.QueryProcessor;

@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import jp.aegif.nemaki.cincom.service.node.impl.CEContentServiceImpl;
-import jp.aegif.nemaki.cincom.shared.CincomManager;
+import jp.aegif.nemaki.cincom.util.CincomManager;
 import jp.aegif.nemaki.model.Folder;
 
 import org.junit.AfterClass;
